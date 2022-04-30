@@ -15,7 +15,7 @@ import java.util.List;
 @Data @NoArgsConstructor @AllArgsConstructor
 public class BankAccount {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private String id;
 
     private String rib;
@@ -24,12 +24,13 @@ public class BankAccount {
 
     private Date created;
 
+    @Enumerated(EnumType.STRING)
     private AccountStatus status;
 
     @ManyToOne
     private Client client;
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account",fetch = FetchType.LAZY)
     private List<BankAccountOperation> operations;
 
 

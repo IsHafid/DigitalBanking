@@ -19,6 +19,7 @@ public class BankAccountOperation {
 
     private double amount;
 
+    @Enumerated(EnumType.STRING)
     private OperationType type;
 
     @ManyToOne
