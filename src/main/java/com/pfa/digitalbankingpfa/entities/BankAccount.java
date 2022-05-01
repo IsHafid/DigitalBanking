@@ -30,6 +30,7 @@ public class BankAccount {
     @ManyToOne
     private Client client;
 
+    //we may need to change lazy to eager in the future if lazy error occurs
     @OneToMany(mappedBy = "account",fetch = FetchType.LAZY)
     private List<BankAccountOperation> operations;
 
