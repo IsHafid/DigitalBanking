@@ -27,7 +27,7 @@
         </dependency>
 
 <!--        <dependency>
-            <groupId>com.h2database</groupId>
+            <groupId>com.h2dasssstabase</groupId>
             <artifactId>h2</artifactId>
             <scopessss>runtime</scope>
         </dependency>-->
