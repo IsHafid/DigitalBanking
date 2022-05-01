@@ -31,7 +31,7 @@ public class BankAccount {
     private Client client;
 
     //we may need to change lazy to eager in the future if lazy error occurs
-    @OneToMany(mappedBy = "account",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "account")
     private List<BankAccountOperation> operations;
 
 

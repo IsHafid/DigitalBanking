@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="Tmp"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content1">
+
+    <div class="container mt-2">
+        <div class="card">
+            <div class="card-header">
+                <h3>Operations Effectué</h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th><th>Date Operation</th><th>MONTANT</th><th>TYPE</th><th>COMPTE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="o:${listOperation}" >
+                        <td th:text="${o.id}"></td>
+                        <td th:text="${o.opDate}"></td>
+                        <td th:text="${o.amount}"></td>
+                        <td th:text="${o.type}"></td>
+                        <td th:text="${o.account}"></td>
+                        <!--Client-->
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

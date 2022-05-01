@@ -25,7 +25,7 @@ public class DigitalBankingPfaApplication {
         SpringApplication.run(DigitalBankingPfaApplication.class, args);
     }
 
-    @Bean
+    //@Bean
     CommandLineRunner start(ClientRepo CR
                             , BankAccOperRepo BAOR
                             , BankAccRepo BAR){
