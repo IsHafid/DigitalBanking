@@ -9,10 +9,13 @@ import com.pfa.digitalbankingpfa.enums.OperationType;
 import com.pfa.digitalbankingpfa.repo.BankAccOperRepo;
 import com.pfa.digitalbankingpfa.repo.BankAccRepo;
 import com.pfa.digitalbankingpfa.repo.ClientRepo;
+import com.pfa.digitalbankingpfa.security.services.SecurityService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 import java.util.UUID;
@@ -25,6 +28,10 @@ public class DigitalBankingPfaApplication {
         SpringApplication.run(DigitalBankingPfaApplication.class, args);
     }
 
+    @Bean
+    PasswordEncoder passwordEncoder (){
+        return new BCryptPasswordEncoder();
+    }
     //@Bean
     CommandLineRunner start(ClientRepo CR
                             , BankAccOperRepo BAOR
@@ -75,6 +82,22 @@ public class DigitalBankingPfaApplication {
 
         });
 
+        };
+    }
+    @Bean
+    CommandLineRunner saveUsers(SecurityService securityService){
+        return args-> {
+            securityService.saveNewUser("hatim","1234","1234");
+            securityService.saveNewUser("ismail","1234","1234");
+            securityService.saveNewUser("mouad","1234","1234");
+
+            securityService.saveNewRole("USER","");
+            securityService.saveNewRole("ADMIN","");
+
+            securityService.addRoleToUser("hatim","USER");
+            securityService.addRoleToUser("hatim","ADMIN");
+            securityService.addRoleToUser("ismail","ADMIN");
+            securityService.addRoleToUser("mouad","USER");
         };
     }
 }
