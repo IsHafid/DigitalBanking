@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class ClientController {
     private BankAccRepo BAccRepo;
     private BankAccOperRepo OprRepo;
 
-    @GetMapping(path = "/index")
+    @GetMapping(path = "/")
     public String client(Model model,
         @RequestParam(name = "page",defaultValue="0")int page ,
         @RequestParam(name = "size",defaultValue="5")int size,
@@ -36,17 +35,13 @@ public class ClientController {
             model.addAttribute("pages",new int[PageC.getTotalPages()]);
             model.addAttribute("currentPage",page);
             model.addAttribute("keyword",keyword);
-            return "clients";
+            return "home";
     }
     @GetMapping("/details")
     public String detailCli(Long id,Model model){
         List<BankAccount> clientDetails =cliRepo.findById(id).get().getAccounts();
         model.addAttribute("listDetail",clientDetails);
         return "details";
-    }
-    @GetMapping("/")
-    public String home(){
-        return "home";
     }
 
     @GetMapping("/Operation")
