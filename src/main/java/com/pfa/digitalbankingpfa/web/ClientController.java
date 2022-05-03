@@ -37,6 +37,13 @@ public class ClientController {
             model.addAttribute("keyword",keyword);
             return "home";
     }
+
+    @GetMapping("/delete")
+    public String delete (Long id, String keyword, int page){
+        cliRepo.deleteById(id);
+        return "redirect:/?page="+page+"&keyword="+keyword;
+    }
+
     @GetMapping("/details")
     public String detailCli(Long id,Model model){
         List<BankAccount> clientDetails =cliRepo.findById(id).get().getAccounts();

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="Tmp"
 >
 <head>
@@ -36,6 +37,7 @@
                         <th scope="col">PRENOM</th>
                         <th scope="col">EMAIL</th>
                         <th scope="col">ACCOUNTS</th>
+                        <th scope="col">DELETE</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -50,6 +52,11 @@
                                 Details
                             </a>
                         </td>
+                        <td sec:authorize="hasAuthority('ADMIN')">
+                        <a onclick="return confirm('Etes vous sur?')" class="btn btn-danger" th:href="@{/delete(id=${c.id}, keyword=${keyword}, page=${currentPage})}">
+                            Supprimer
+                        </a>
+                    </td>
 
 
                     </tr>
