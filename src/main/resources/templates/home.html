@@ -26,7 +26,7 @@
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                         </svg></button>
                     </form>
-                    <a class="dropdown-item" th:href="@{/formPatients}">Nouveau Client</a>
+                    <a class="dropdown-item" th:href="@{/formClient}">Nouveau Client</a>
                 </div>
                 <br>
                 <table class="table  table-bordered table-light table-hover">
@@ -60,7 +60,7 @@
                         </a>
                     </td>
                         <td sec:authorize="hasAuthority('ADMIN')">
-                            <a class="btn btn-success" th:href="@{/admin/editPatient(id=${p.id}, keyword=${keyword}, page=${currentPage})}">
+                            <a class="btn btn-success" th:href="@{/editClient(id=${c.id}, keyword=${keyword}, page=${currentPage})}">
                                 Edit
                             </a>
                         </td>

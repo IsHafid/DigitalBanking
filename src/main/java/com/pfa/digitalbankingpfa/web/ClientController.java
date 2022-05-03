@@ -11,9 +11,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -42,6 +45,30 @@ public class ClientController {
     public String delete (Long id, String keyword, int page){
         cliRepo.deleteById(id);
         return "redirect:/?page="+page+"&keyword="+keyword;
+    }
+
+    @GetMapping("/formClient")
+    public String formPatients(Model model){
+        model.addAttribute("client", new Client());
+        return "formClient";
+    }
+    @PostMapping("/save")
+    public String save(Model model, @Valid Client client, BindingResult bindingResult
+            , @RequestParam(defaultValue = "") String keyword
+            , @RequestParam(defaultValue = "0")  int page){
+        if (bindingResult.hasErrors()) return "formClient";
+        cliRepo.save(client);
+        return "redirect:/?page="+page+"&keyword="+keyword;
+    }
+
+    @GetMapping("/editClient")
+    public String editClient(Model model, Long id, String keyword, int page){
+        Client client= cliRepo.findById(id).get();
+        if (client==null) throw new RuntimeException("Client Introuvable");
+        model.addAttribute("client",client);
+        model.addAttribute("page", page);
+        model.addAttribute("keyword", keyword);
+        return "editClient";
     }
 
     @GetMapping("/details")
