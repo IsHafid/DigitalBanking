@@ -14,22 +14,26 @@
     <div class="container mt-2">
         <div class="card">
             <div class="card-header">
-                <h3>Operations Effectué</h3>
+                <h3 class="d-flex aligns-items-center justify-content-center">Operations Effectué</h3>
             </div>
             <div class="card-body">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>ID</th><th>Date Operation</th><th>MONTANT</th><th>TYPE</th><th>COMPTE</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Date Operation</th>
+                        <th scope="col">MONTANT</th>
+                        <th scope="col">TYPE</th>
+                        <th scope="col">COMPTE</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="o:${listOperation}" >
-                        <td th:text="${o.id}"></td>
-                        <td th:text="${o.opDate}"></td>
-                        <td th:text="${o.amount}"></td>
-                        <td th:text="${o.type}"></td>
-                        <td th:text="${o.account}"></td>
+                        <td style="width: 10%" th:text="${o.id}"></td>
+                        <td style="width: 20%" th:text="${o.opDate}"></td>
+                        <td style="width: 20%" th:text="${o.amount}"></td>
+                        <td style="width: 20%" th:text="${o.type}"></td>
+                        <td style="width: 20%" th:text="${o.account}"></td>
                         <!--Client-->
 
                     </tr>
