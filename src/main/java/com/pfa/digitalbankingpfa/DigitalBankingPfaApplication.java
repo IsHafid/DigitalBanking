@@ -84,7 +84,7 @@ public class DigitalBankingPfaApplication {
 
         };
     }
-    @Bean
+    //@Bean
     CommandLineRunner saveUsers(SecurityService securityService){
         return args-> {
             securityService.saveNewUser("hatim","1234","1234");
