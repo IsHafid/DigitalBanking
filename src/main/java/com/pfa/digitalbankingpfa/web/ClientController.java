@@ -44,6 +44,10 @@ public class ClientController {
         model.addAttribute("listDetail",clientDetails);
         return "details";
     }
+    @GetMapping("/")
+    public String home(){
+        return "home";
+    }
 
     @GetMapping("/Operation")
     public String detailOperation(String id,Model model){
